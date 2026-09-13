@@ -1,0 +1,35 @@
+{
+  "name": "sonora-windows",
+  "version": "2.0.0",
+  "description": "A minimal, beautifully designed music player for Windows - inspired by Sonora Mac",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build:portable": "electron-builder --win portable"
+  },
+  "author": "Sonora Windows Port",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "com.sonora.windows",
+    "productName": "Sonora",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "music-metadata": "^7.14.0"
+  }
+}

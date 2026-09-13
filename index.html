@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonora</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: file:; media-src 'self' file:; style-src 'self' 'unsafe-inline'">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Title Bar -->
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <span class="logo">♫</span>
+        <span class="title">Sonora</span>
+      </div>
+      <div class="titlebar-controls">
+        <button class="tb-btn" id="btn-min">─</button>
+        <button class="tb-btn" id="btn-max">□</button>
+        <button class="tb-btn close" id="btn-close">✕</button>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="nav-item active" data-view="library">
+          <span>▤</span> Library
+        </div>
+        <div class="nav-item" data-view="albums">
+          <span>▦</span> Albums
+        </div>
+        <div class="nav-item" data-view="artists">
+          <span>♪</span> Artists
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">AI Studio</div>
+        <div class="nav-item" data-view="mixes">
+          <span>🧠</span> AI Mixes
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Playlists</div>
+        <div class="nav-item" data-view="playlists">
+          <span>≡</span> All Playlists
+        </div>
+      </div>
+      <div class="sidebar-spacer"></div>
+      <button class="btn-import" id="btn-import">
+        <span>＋</span> Add Music
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <div class="content-header">
+        <div class="header-row">
+          <h1 class="content-title" id="content-title">All Music</h1>
+          <input type="text" id="search" class="search" placeholder="Search your music (Ctrl+F)">
+        </div>
+      </div>
+      <div class="content" id="content">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">♫</div>
+          <h2>Your Music</h2>
+          <p>Add a folder of music to get started</p>
+          <button class="btn-primary" id="btn-empty-import">Add Music</button>
+        </div>
+        <div class="song-list" id="song-list" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- Now Playing Bar -->
+    <div class="nowplaying">
+      <div class="np-left">
+        <div class="np-art" id="np-art">♪</div>
+        <div class="np-info">
+          <div class="np-title-row">
+            <span class="np-title" id="np-title">Select a song</span>
+            <span class="np-badge" id="np-badge" style="display:none"></span>
+          </div>
+          <div class="np-subtitle" id="np-subtitle">Nothing playing</div>
+        </div>
+        <button class="ctrl-btn radio-btn" id="btn-radio" title="AI Radio — play similar songs">🎧</button>
+      </div>
+      <div class="np-center">
+        <div class="np-controls">
+          <button class="ctrl-btn mode-btn" id="btn-shuffle" title="Shuffle">🔀</button>
+          <button class="ctrl-btn" id="btn-prev">⏮</button>
+          <button class="ctrl-btn play" id="btn-play">▶</button>
+          <button class="ctrl-btn" id="btn-next">⏭</button>
+          <button class="ctrl-btn mode-btn" id="btn-repeat" title="Repeat">🔁</button>
+        </div>
+        <div class="np-progress">
+          <span class="time" id="time-current">0:00</span>
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="time" id="time-total">0:00</span>
+        </div>
+      </div>
+      <div class="np-right">
+        <span class="volume-icon">🔊</span>
+        <input type="range" id="volume" class="volume" min="0" max="100" value="80">
+      </div>
+    </div>
+  </div>
+
+  <audio id="audio"></audio>
+  <div class="toast-container" id="toast-container"></div>
+  <script src="ai.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
